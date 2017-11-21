@@ -47,7 +47,7 @@ namespace Anima2D
 				rootBoneToTarget = rootBone.transform.parent.InverseTransformDirection(rootBoneToTarget);
 			}
 
-			float baseAngle = Mathf.Atan2(rootBoneToTarget.y, rootBoneToTarget.x) * Mathf.Rad2Deg;
+			float baseAngle = Vector2.SignedAngle(Bone2D.axis, rootBoneToTarget);
 
 			pose0.solverRotation = Quaternion.Euler(0f,0f, baseAngle - flipSign * angle0);
 			pose1.solverRotation = Quaternion.Euler(0f,0f, flipSign * angle1);

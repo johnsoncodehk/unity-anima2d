@@ -7,6 +7,9 @@ namespace Anima2D
 {
 	public class Bone2D : MonoBehaviour
 	{
+
+		public static Vector2 axis = Vector2.up;
+
 		[SerializeField][FormerlySerializedAs("color")]
 		Color m_Color = Color.white;
 
@@ -75,7 +78,7 @@ namespace Anima2D
 		public Vector3 localEndPosition
 		{
 			get {
-				return Vector3.right*localLength;
+				return Bone2D.axis*localLength;
 			}
 		}
 
@@ -91,7 +94,7 @@ namespace Anima2D
 				if(child)
 				{
 					Vector3 childPosition = transform.InverseTransformPoint(child.transform.position);
-					m_Length = Mathf.Clamp(childPosition.x,0f,childPosition.x);
+					m_Length = Mathf.Max(Vector2.Dot(Bone2D.axis, childPosition),0f);
 				}
 
 				return m_Length;

@@ -233,7 +233,7 @@ namespace Anima2D
 
 				Quaternion l_deltaInverseRotation = Quaternion.identity;
 				
-				float angle = Mathf.Atan2(localPosition.y,localPosition.x) * Mathf.Rad2Deg;
+				float angle = Vector2.SignedAngle(Bone2D.axis, localPosition);
 				
 				if(recordObject)
 				{
