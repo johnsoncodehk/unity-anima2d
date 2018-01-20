@@ -93,7 +93,7 @@ namespace UnityChan
 			float sqrDt = Time.deltaTime * Time.deltaTime;
 
 			//stiffness
-			Vector3 force = trs.rotation * (Vector3.right * stiffnessForce) / sqrDt;
+			Vector3 force = trs.rotation * (Bone2D.axis * stiffnessForce) / sqrDt;
 
 			//drag
 			force += (prevTipPos - currTipPos) * dragForce / sqrDt;
@@ -123,7 +123,7 @@ namespace UnityChan
 			prevTipPos = temp;
 
 			//回転を適用；
-			Vector3 aimVector = trs.TransformDirection (Vector3.right);
+			Vector3 aimVector = trs.TransformDirection (Bone2D.axis);
 			Quaternion aimRotation = Quaternion.FromToRotation (aimVector, currTipPos - trs.position);
 			//original
 			//trs.rotation = aimRotation * trs.rotation;
